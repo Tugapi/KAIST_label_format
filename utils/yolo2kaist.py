@@ -1,6 +1,3 @@
-import os
-import cv2
-
 def yolo_to_kaist(yolo_result_file, output_file, image_width, image_height):
     with open(yolo_result_file, 'r') as infile, open(output_file, 'w') as outfile:
         # class_id, confidence, x_center, y_center, width, height
@@ -24,9 +21,9 @@ def yolo_to_kaist(yolo_result_file, output_file, image_width, image_height):
 
             outfile.write(f"{frame_id} {float(x_min)} {float(y_min)} {float(x_max)} {float(y_max)} {confidence:.6f}\n")
 
-# Example usage
-image_width = 640  # replace with actual image width
-image_height = 512  # replace with actual image height
-yolo_result_file = 'output_file.txt'
-output_file = 'kaist_results.txt'
-yolo_to_kaist(yolo_result_file, output_file, image_width, image_height)
+if __name__ == '__main__':
+    image_width = 640  # replace with actual image width
+    image_height = 512  # replace with actual image height
+    yolo_result_file = 'output_file.txt'
+    output_file = 'kaist_results.txt'
+    yolo_to_kaist(yolo_result_file, output_file, image_width, image_height)
